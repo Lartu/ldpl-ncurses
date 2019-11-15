@@ -3,7 +3,7 @@
 The **LDPL Ncurses Library** is a [ncurses](https://en.wikipedia.org/wiki/Ncurses) wrapper
 for LDPL, designed for creating terminal applications that require more complex text
 user-interfaces than simple line-feeding. It aims to make it very easy to move text
-across a console, change text colors, etc. This library requires **LDPL 4.3** or greater.
+across a console, change text colors, read user key-presses, etc. This library requires **LDPL 4.3** or greater.
 
 ## 🖼️ Example
 
