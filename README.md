@@ -1,9 +1,9 @@
-![The LDPL Network Server Library](images/ldpl-net-logo.png)
+![The LDPL Network Server Library](images/liblogo.png)
 
-The **LDPL Network Server Library** is an library for creating socket based servers in
-[**LDPL**](https://www.github.com/lartu/ldpl). It aims to make it very easy to develop,
-test and deploy network servers, with as little work as possible. This library requires
-**LDPL 4.3** or greater.
+The **LDPL Ncurses Library** is a [ncurses](https://en.wikipedia.org/wiki/Ncurses) wrapper
+for LDPL, designed for creating terminal applications that require more complex text
+user-interfaces than simple line-feeding. It aims to make it very easy to move text
+across a console, change text colors, etc. This library requires **LDPL 4.3** or greater.
 
 ## 🖼️ Example
 
