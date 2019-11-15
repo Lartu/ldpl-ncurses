@@ -1,5 +1,9 @@
 ![The LDPL Network Server Library](images/liblogo.png)
 
+![Version](https://img.shields.io/badge/version-1.0-brown.svg)
+![License](https://img.shields.io/badge/license-MIT-yellow)
+![Size](https://img.shields.io/github/languages/code-size/lartu/ldpl-ncurses)
+
 The **LDPL Ncurses Library** is a [ncurses](https://en.wikipedia.org/wiki/Ncurses) wrapper
 for LDPL, designed for creating terminal applications that require more complex text
 user-interfaces than simple line-feeding. It aims to make it very easy to move text
