@@ -20,7 +20,7 @@ include "ldpl-ncurses/ldpl-ncurses.ldpl"
 ```
 
 before the `data` and `procedure` sections of your source file. The library is
-ready to be used.
+ready to be used. In order to build agains this library, you must have the **libncurses dev** package installed on your system. For example, if you are using Debian Linux or Ubuntu Linux (or any other distribution that uses the **apt** package manager), you may install it by running `apt install libncurses-dev`.
 
 ## 📚 Documentation
 
