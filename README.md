@@ -24,77 +24,51 @@ ready to be used.
 
 ## 📚 Documentation
 
-This library adds five new statements to the language:
-- `NET LISTEN ON <number>`
-   - Use this statement to start your server on port number `<number>`. Do this after
-   you've written all our code and set up the whole library, as this is a locking
-   statement and anything after it won't be executed (because your server will be too
-   busy listening for new data and connections).
-- `NET START ON <number>`
-   - Use this statement to start your server on port number `<number>` without blocking
-   the execution of your program. You will need to use `NET POLL` to listen for client
-   activity. When your program exits, the socket is closed.
-- `NET POLL`
-   - Use this statement to listen for client activity when your server has been started
-   using `NET START ON <number>`.
-- `NET SEND <text> TO <socket number>`
-   - Use this statement send the message `<text>` to the client identified by the
-   socket number `<socket number>`. The client will receive your message, easy as pie.
-- `NET KICK CLIENT <socket number>`
-   - Use this statement to disconnect the client identified by the socket number `<socket number>`.
-   
-In order to work, the library requires you to declare three sub-procedures:
+This library adds a number new statements to the language:
+- `NC INITIALIZE`
+   - Use this statement to initialize this library. This statement **must** be called before any other statements provided by this library are used.
+- `NC CLEAN UP`
+   - Use this statement to restore the terminal configuration to what it was before calling `NC INITIALIZE`. This statement must be called before the program exits, or else you will end up with a messed up terminal.
+- `NC GET SIZE IN <number_var> <number_var>`
+   - Use this statement to get the width and height of the terminal in `<number_var>` and `<number_var>`, respectively.
+- `NC MOVE TO <number> <number>`
+   - Moves the cursor to the column and row defined by the passed numbers, in that order. The upper-left corner of the terminal is the 0, 0 coordinate.
+- `NC WRITE <number or text>`
+   - Writes the passed text or number at the current cursor position.
+- `NC REPAINT`
+   - In order to make this library more efficient, it doesn't output anything to the screen until this command is executed, instead it writes all text to a buffer. When this statement is executed, that buffer is copied to the screen.
+- `NC SHOW CURSOR`
+   - Use this statement to show the console cursor. The cursor is shown by default.
+- `NC HIDE CURSOR`
+   - Use this statement to hide the console cursor.
+- `NC ENABLE COLOR`
+   - This statement enables color. Color cannot be disabled once enabled. If this statement is not executed, text color setting will have visible effect.
+- `NC SET COLOR <number>`
+   - Sets the color of the foreground and background of the text to be printed from now on. `<number>` is expected to be a number (or number variable) between 1 (inclusive) and 55 (inclusive). Check the [Color Guide]() section of this document for more information about the available colors.
+- `NC GET KEY IN <text variable>`
+   - Use this statement to read user input. This statement has two modes: blocking and non-blocking. When on blocking mode, your program will halt until the user presses a key. The value of the key pressed will be stored in the passed text variable. In non-blocking mode, when this statement is executed it will try to read the value of a pressed key and store it in the passed text variable. If no key is pressed, `""` (an empty string) is stored in the variable instead. Check the [Key Values]() section of this document to read about the values stored by this statement in the passed text variable.
+- `NC SET NON BLOCKING INPUT`
+   - This statement tells LDPL to use non-blocking input. This means that when you call `NC GET KEY IN $`, your program will not wait until a key is pressed and will continue executing had a key been pressed or not. Input is blocking by default.
+- `NC SET BLOCKING INPUT`
+   - This statement tells LDPL to use blocking input. This means that when you call `NC GET KEY IN $`, your program will hang until a key is pressed. Input is blocking by default.
+- `NC SET NON BLOCKING INPUT`
+   - This statement tells LDPL to use non-blocking input. This means that when you call `NC GET KEY IN $`, your program will not wait until a key is pressed and will continue executing had a key been pressed or not.
+- `NC ENABLE ECHO`
+   - Use this statement to print characters as they are typed by the user when accepting input.
+- `NC DISABLE ECHO`
+   - Use this statement to disable the printing of characters as they are typed by the user when accepting input.
+- `NC BOX <number> <number> <number> <number>`
+   - Use this statement to draw a box. The box is drawn from its upper-left corner. The passed numbers are: the column of the upper-left corner of the box, the row of the upper-left corner of the box, the width of the box and the height of the box, respectively.
+- `NC BOX <text> <number> <number> <number> <number>`
+   - Use this statement to draw a box with a title. It works just like `NC BOX`, but the passed text value is used as the title of the box and printed on its upper side.
+- `NC SHADOW BOX <number> <number> <number> <number>`
+   - This statement is the same as `NC BOX` (without title) but it draws a shadow below its box.
+- `NC SHADOW BOX <text> <number> <number> <number> <number>`
+   - This statement is the same as `NC BOX` (with title) but it draws a shadow below its box.
 
-### `net_new_client`
+## 🎨 Color Guide
 
-This sub-procedure will be called when a new client connects to your server. When called,
-it will receive three values: a `socket_number` identifying your client (you may want to
-store this value somewhere), the `ip` of the connecting client and its `port`.
-
-```coffeescript
-sub net_new_client
-    parameters:
-        socket_number is number
-        ip is text
-        port is number
-    procedure:
-        # Your code goes here
-end sub
-```
-
-### `net_client_left`
-
-This sub-procedure will be called when a client that was connected to our server closes
-the connection and disconnects. When called, it will receive three values: a `socket_number`
-identifying the client that left, the `ip` of the disconnecting client and its `port`.
-
-```coffeescript
-sub net_client_left
-    parameters:
-        socket_number is number
-        ip is text
-        port is number
-    procedure:
-        # Your code goes here
-end sub
-```
-
-
-### `net_new_message`
-
-This sub-procedure will be called whenever a connected client sends a message to our server.
-When called, it will receive two values: a `socket_number` identifying the client that sent
-the message and the `message` itself.
-
-```coffeescript
-sub net_new_message
-    parameters:
-        socket_number is number
-        message is text
-    procedure:
-        # Your code goes here
-end sub
-```
+## :keyboard: Character Guide
 
 ## :book: Template
 
