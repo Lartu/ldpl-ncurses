@@ -157,7 +157,7 @@ statement.
 | Insert | `INSERT` |
 | Delete | `DELETE` |
 | Backspace | `BACKSPACE` |
-| Enter / Return | `ENTER` |
+| Enter / Return | `C-M` |
 | Control + Q | `C-Q` |
 | Control + W | `C-W` |
 | Control + E | `C-E` |
