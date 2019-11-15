@@ -44,9 +44,9 @@ This library adds a number new statements to the language:
 - `NC ENABLE COLOR`
    - This statement enables color. Color cannot be disabled once enabled. If this statement is not executed, text color setting will have visible effect.
 - `NC SET COLOR <number>`
-   - Sets the color of the foreground and background of the text to be printed from now on. `<number>` is expected to be a number (or number variable) between 1 (inclusive) and 56 (inclusive). Check the [Color Guide]() section of this document for more information about the available colors.
+   - Sets the color of the foreground and background of the text to be printed from now on. `<number>` is expected to be a number (or number variable) between 1 (inclusive) and 56 (inclusive). Check the [Color Guide](https://github.com/Lartu/ldpl-ncurses#-color-guide) section of this document for more information about the available colors.
 - `NC GET KEY IN <text variable>`
-   - Use this statement to read user input. This statement has two modes: blocking and non-blocking. When on blocking mode, your program will halt until the user presses a key. The value of the key pressed will be stored in the passed text variable. In non-blocking mode, when this statement is executed it will try to read the value of a pressed key and store it in the passed text variable. If no key is pressed, `""` (an empty string) is stored in the variable instead. Check the [Key Values]() section of this document to read about the values stored by this statement in the passed text variable.
+   - Use this statement to read user input. This statement has two modes: blocking and non-blocking. When on blocking mode, your program will halt until the user presses a key. The value of the key pressed will be stored in the passed text variable. In non-blocking mode, when this statement is executed it will try to read the value of a pressed key and store it in the passed text variable. If no key is pressed, `""` (an empty string) is stored in the variable instead. Check the [Key Values](https://github.com/Lartu/ldpl-ncurses#-key-values) section of this document to read about the values stored by this statement in the passed text variable. Input is UTF-8 friendly; if you enter `ñ` or `あ`, you'll get that character in the passed text variable.
 - `NC SET NON BLOCKING INPUT`
    - This statement tells LDPL to use non-blocking input. This means that when you call `NC GET KEY IN $`, your program will not wait until a key is pressed and will continue executing had a key been pressed or not. Input is blocking by default.
 - `NC SET BLOCKING INPUT`
@@ -132,10 +132,52 @@ The actual colors used depend on the configuration of your terminal.
 
 ## :keyboard: Character Guide
 
-## :book: Template
+When using the `NC GET KEY IN $` statement, the following characters
+and key combinations are considered to be *special* characters. When
+we are reading for user input and the user presses these keys, these
+are the values that are stored in the text variable passed to the `NC GET KEY IN $`
+statement.
 
-A simple template for a minimal echo server can be found in the *net_template.ldpl* file.
-Be sure to check it if you have any doubts about where to start writing your server.
+| Key | Value Stored |
+|:---:|:------------:|
+| Up Arrow | `UP` |
+| Left Arrow | `LEFT` |
+| Right Arrow | `RIGHT` |
+| Down Arrow | `DOWN` |
+| Page Down | `PAGEDOWN` |
+| Page Up | `PAGEUP` |
+| Home | `HOME` |
+| End | `END` |
+| Insert | `INSERT` |
+| Delete | `DELETE` |
+| Backspace | `BACKSPACE` |
+| Enter / Return | `ENTER` |
+| Control + Q | `C-Q` |
+| Control + W | `C-W` |
+| Control + E | `C-E` |
+| Control + R | `C-R` |
+| Control + T | `C-T` |
+| Control + Y | `C-Y` |
+| Control + I | `C-I` |
+| Control + O | `C-O` |
+| Control + P | `C-P` |
+| Control + A | `C-A` |
+| Control + S | `C-S` |
+| Control + D | `C-D` |
+| Control + F | `C-F` |
+| Control + G | `C-G` |
+| Control + H | `C-H` |
+| Control + J | `C-J` |
+| Control + K | `C-K` |
+| Control + L | `C-L` |
+| Control + Z | `C-Z` |
+| Control + X | `C-X` |
+| Control + C | `C-C` |
+| Control + V | `C-V` |
+| Control + B | `C-B` |
+| Control + N | `C-N` |
+| Control + M | `C-M` |
+| Any other key or value | The text value that key represents (for example, if you press **a** you get `a`; if you press **Ö** you get `Ö`). |
 
 ## :scroll: License
 
