@@ -44,7 +44,7 @@ This library adds a number new statements to the language:
 - `NC ENABLE COLOR`
    - This statement enables color. Color cannot be disabled once enabled. If this statement is not executed, text color setting will have visible effect.
 - `NC SET COLOR <number>`
-   - Sets the color of the foreground and background of the text to be printed from now on. `<number>` is expected to be a number (or number variable) between 1 (inclusive) and 55 (inclusive). Check the [Color Guide]() section of this document for more information about the available colors.
+   - Sets the color of the foreground and background of the text to be printed from now on. `<number>` is expected to be a number (or number variable) between 1 (inclusive) and 56 (inclusive). Check the [Color Guide]() section of this document for more information about the available colors.
 - `NC GET KEY IN <text variable>`
    - Use this statement to read user input. This statement has two modes: blocking and non-blocking. When on blocking mode, your program will halt until the user presses a key. The value of the key pressed will be stored in the passed text variable. In non-blocking mode, when this statement is executed it will try to read the value of a pressed key and store it in the passed text variable. If no key is pressed, `""` (an empty string) is stored in the variable instead. Check the [Key Values]() section of this document to read about the values stored by this statement in the passed text variable.
 - `NC SET NON BLOCKING INPUT`
@@ -67,6 +67,68 @@ This library adds a number new statements to the language:
    - This statement is the same as `NC BOX` (with title) but it draws a shadow below its box.
 
 ## 🎨 Color Guide
+
+The following colors are available when using the `NC SET COLOR $` statement.
+The actual colors used depend on the configuration of your terminal.
+
+| Scheme number | Foreground Color | Background Color |
+|:-------------:|:----------------:|:----------------:|
+| **1**         | RED | BLACK |
+| **2**         | GREEN | BLACK |
+| **3**         | YELLOW | BLACK |
+| **4**         | BLUE | BLACK |
+| **5**         | CYAN | BLACK |
+| **6**         | MAGENTA | BLACK |
+| **7**         | WHITE | BLACK |
+| **8**          | GREEN | RED |
+| **9**          | YELLOW | RED |
+| **10**         | BLUE | RED |
+| **11**         | CYAN | RED |
+| **12**         | MAGENTA | RED |
+| **13**         | WHITE | RED |
+| **14**         | BLACK | RED |
+| **15**         | RED | GREEN |
+| **16**         | YELLOW | GREEN |
+| **17**         | BLUE | GREEN |
+| **18**         | CYAN | GREEN |
+| **19**         | MAGENTA | GREEN |
+| **20**         | WHITE | GREEN |
+| **21**         | BLACK | GREEN |
+| **22**         | RED | YELLOW |
+| **23**         | GREEN | YELLOW |
+| **24**         | BLUE | YELLOW |
+| **25**         | CYAN | YELLOW |
+| **26**         | MAGENTA | YELLOW |
+| **27**         | WHITE | YELLOW |
+| **28**         | BLACK | YELLOW |
+| **29**         | RED | BLUE |
+| **30**         | GREEN | BLUE |
+| **31**         | YELLOW | BLUE |
+| **32**         | CYAN | BLUE |
+| **33**         | MAGENTA | BLUE |
+| **34**         | WHITE | BLUE |
+| **35**         | BLACK | BLUE |
+| **36**         | RED | CYAN |
+| **37**         | GREEN | CYAN |
+| **38**         | YELLOW | CYAN |
+| **39**         | BLUE | CYAN |
+| **40**         | MAGENTA | CYAN |
+| **41**         | WHITE | CYAN |
+| **42**         | BLACK | CYAN |
+| **43**         | RED | MAGENTA |
+| **44**         | GREEN | MAGENTA |
+| **45**         | YELLOW | MAGENTA |
+| **46**         | BLUE | MAGENTA |
+| **47**         | CYAN | MAGENTA |
+| **48**         | WHITE | MAGENTA |
+| **49**         | BLACK | MAGENTA |
+| **50**         | RED | WHITE |
+| **51**         | GREEN | WHITE |
+| **52**         | YELLOW | WHITE |
+| **53**         | BLUE | WHITE |
+| **54**         | CYAN | WHITE |
+| **55**         | MAGENTA | WHITE |
+| **56**         | BLACK | WHITE |
 
 ## :keyboard: Character Guide
 
