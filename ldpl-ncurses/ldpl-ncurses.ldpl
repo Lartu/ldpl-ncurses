@@ -1,5 +1,7 @@
 extension "ldpl-ncurses.cpp"
-flag "-lncursesw"
+flag linux "-lncursesw"
+flag macos "-lncurses"
+flag macos "-D_XOPEN_SOURCE_EXTENDED"
 
 data:
 NCURSES_LDPLLIB_COLOR is external number
