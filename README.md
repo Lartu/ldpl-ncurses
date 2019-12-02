@@ -15,7 +15,22 @@ The [Lute](https://github.com/lartu/lute) text editor was written using this lib
 
 ![Lute Screenshot](https://raw.githubusercontent.com/Lartu/lute/master/images/screenshot.png)
 
+
 ## 🧰 Installation
+
+You can install this library **by hand** or **using [LPM](https://github.com/Lartu/ldpl#-libraries)**.
+
+### 📦 Installing using LPM
+
+Open a terminal and write `lpm install ldpl-ncurses`. Once downloaded, include it in your LDPL project by adding the line:
+
+```coffeescript
+using package ldpl-ncurses
+```
+
+before the `data` and `procedure` sections of your source file. The library is ready to be used.
+
+### ✋🏻 Installing by hand
 
 Include the library into your LDPL project by copying the folder *ldpl-ncurses* to your project directory and then adding the line:
 
@@ -25,6 +40,8 @@ include "ldpl-ncurses/ldpl-ncurses.ldpl"
 
 before the `data` and `procedure` sections of your source file. The library is
 ready to be used.
+
+### Note:
 
 In order to build against this library, you must have the **libncurses dev** package installed on your system. If you are using Debian Linux or Ubuntu Linux (or any other distribution that uses the **apt** package manager), you may install it by running `apt install libncurses-dev`. Users using other distributions or operating systems should install the package in the ways required by their respective systems. This package is just required to *develop* applications using this library, not to *use* said applications.
 
